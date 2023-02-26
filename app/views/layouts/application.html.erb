@@ -9,9 +9,13 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
   </head>
 
   <body class="h-full">
+    <%= render 'layouts/header' %>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
