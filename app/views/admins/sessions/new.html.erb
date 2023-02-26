@@ -1,26 +1,35 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<!-- Hi!, component -->
+<div class="max-w-lg mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
+  <h1 class="text-4xl font-medium">Login</h1>
+  <div class="my-5">
+    <button class="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150 disabled">
+      <p class="text-slate-500">Hi, Welcome 👋</p>
+    </button>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "my-10" }) do |f| %>
+    <div class="flex flex-col space-y-5">
+      <label for="email">
+        <p class="font-medium text-slate-700 pb-2">Email address</p>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow", placeholder: "Enter email address" %>
+      </label>
+      <label for="password">
+        <p class="font-medium text-slate-700 pb-2">Password</p>
+        <%= f.password_field :password, autocomplete: "current-password", id: "password", class: "w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow", placeholder: "Enter your password" %>
+      </label>
+      <div class="flex flex-row justify-between">
+        <div>
+          <% if devise_mapping.rememberable? %>
+            <%= f.check_box :remember_me, class: "w-4 h-4 border-slate-200 focus:bg-indigo-600" %>
+            <%= f.label :remember_me %>
+          <% end %>
+        </div>
+        <div>
+          <a href="password/new" class="font-medium text-indigo-600">Forgot Password?</a>
+        </div>
+      </div>
+      <%= f.submit "Log in", class: "w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center" %><br>
     </div>
+    <%= render "admins/shared/links" %>
   <% end %>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
