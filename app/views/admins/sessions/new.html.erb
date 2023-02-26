@@ -7,6 +7,7 @@
     </button>
   </div>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "my-10" }) do |f| %>
+    <%= render "admins/shared/error_messages", resource: resource %>
     <div class="flex flex-col space-y-5">
       <label for="email">
         <p class="font-medium text-slate-700 pb-2">Email address</p>
@@ -22,9 +23,6 @@
             <%= f.check_box :remember_me, class: "w-4 h-4 border-slate-200 focus:bg-indigo-600" %>
             <%= f.label :remember_me %>
           <% end %>
-        </div>
-        <div>
-          <a href="password/new" class="font-medium text-indigo-600">Forgot Password?</a>
         </div>
       </div>
       <%= f.submit "Log in", class: "w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center" %><br>
