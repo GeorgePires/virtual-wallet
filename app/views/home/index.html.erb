@@ -1,4 +1,7 @@
 <div>
   <h1 class="font-bold text-4xl">Home#index</h1>
   <p>Find me in app/views/home/index.html.erb</p>
+
+  <%= button_to("Logout", destroy_admin_session_path, method: :delete, class: "mr-5 hover:text-black") %>
+  <%= link_to "Login", new_admin_session_path, class: "mr-5 hover:text-white" %>
 </div>
