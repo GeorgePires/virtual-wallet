@@ -9,6 +9,21 @@
     <%= user.email %>
   </p>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Data:</strong>
+    <%= user.created_at %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Code:</strong>
+    <%= user.try(:wallet).try(:wallet_number) %>
+  </p>
+
+   <p class="my-5">
+    <strong class="block font-medium mb-1">Balance available:</strong>
+    <%= number_to_currency(user.try(:wallet).try(:balance), unit: "R$ ", separator: ".", delimiter: ",") %>
+  </p>
+
   <% if action_name != "show" %>
     <%= link_to "Show this user", user, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this user', edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
