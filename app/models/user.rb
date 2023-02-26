@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   after_create :create_wallet
   
-  has_one :wallet
+  has_one :wallet, dependent: :destroy
 
   validates :name, :email, presence: true
   
