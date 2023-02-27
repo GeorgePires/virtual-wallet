@@ -5,4 +5,24 @@ class WalletsControllerTest < ActionDispatch::IntegrationTest
     get wallets_index_url
     assert_response :success
   end
+
+  test "should get show" do
+    get wallets_show_url
+    assert_response :success
+  end
+
+  test "should get credit" do
+    get wallets_credit_url
+    assert_response :success
+  end
+
+  test "should get debit" do
+    get wallets_debit_url
+    assert_response :success
+  end
+
+  test "should get transactions" do
+    get wallets_transactions_url
+    assert_response :success
+  end
 end
