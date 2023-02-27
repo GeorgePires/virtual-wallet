@@ -11,5 +11,36 @@
       <%= button_to 'Destroy this user', user_path(@user), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
     <%= link_to 'Back to users', users_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+    <h1><%= @user.name %></h1>
+
+    <p><strong>Email:</strong> <%= @user.email %></p>
+
+    <h2>Virtual Wallet</h2>
+
+    <p><strong>Balance:</strong> <%= number_to_currency(@user.try(:wallet).try(:balance)) %></p>
+
+    <h3>Wallet Entries</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Created At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @transactions&.each do |t| %>
+          <tr>
+            <td><%= t.transaction_type %></td>
+            <td><%= number_to_currency(t.amount) %></td>
+            <td><%= t.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to "Back", users_path %>
   </div>
 </div>

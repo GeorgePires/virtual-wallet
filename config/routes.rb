@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  get 'wallets/index'
-  resources :users
+  resources :users do
+    resources :wallets do
+      collection do
+        get "/credit", action: 'credit'
+        post '/create_credit', action: 'create_credit'
+        
+        get "/debit", action: 'debit'
+        post '/create_debit', action: 'create_debit'
+      end
+    end
+  end
   devise_for :admins
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
