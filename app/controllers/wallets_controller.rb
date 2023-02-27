@@ -1,4 +1,5 @@
 class WalletsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_wallet_and_user, only: %i[ show credit create_credit debit create_debit transactions]
 
   def show; end
