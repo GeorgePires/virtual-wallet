@@ -1,4 +1,5 @@
 class WalletsController < ApplicationController
+  layout 'home'
   before_action :authenticate_admin!
   before_action :set_wallet_and_user, only: %i[ show credit create_credit debit create_debit transactions]
 
@@ -11,7 +12,7 @@ class WalletsController < ApplicationController
     
     if amount > 0 
       @wallet.credit(amount)
-      redirect_to users_path, notice: "Credit of #{amount} was successful." 
+      redirect_to users_path, notice: "Credit of R$ #{amount} was successful." 
     else
       redirect_to users_path, alert: "Credit of #{amount} was unsuccessful."
     end
@@ -23,7 +24,7 @@ class WalletsController < ApplicationController
 
     begin
       if @wallet.debit(amount)
-        redirect_to users_path, notice: "Debit of #{amount} was successful."
+        redirect_to users_path, notice: "Debit of R$ #{amount} was successful."
       end
     rescue StandardError => e
       redirect_to users_path, alert: "Debit of #{amount} was unsuccessful: #{e.message}"
