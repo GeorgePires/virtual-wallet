@@ -1,0 +1,88 @@
+<a
+  class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+  href="https://github.com/estevanmaito/windmill-dashboard">
+  <div class="flex items-center">
+    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+      <path
+        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+    </svg>
+    <span>Welcome!</span>
+  </div>
+</a>
+<!-- Cards -->
+<% if notice.present? %>
+  <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
+    <%= notice %>
+  </p>
+<% end %>
+
+<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+  <!-- Card -->
+  <div
+    class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+    <div
+      class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path
+          d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
+      </svg>
+    </div>
+    <div>
+      <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+        Total clients
+      </p>
+      <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><%= @users&.count %></p>
+    </div>
+  </div>
+  <!-- Card -->
+  <div
+    class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+    <div
+      class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path
+          fill-rule="evenodd"
+          d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </div>
+    <div>
+      <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+        Total wallets balance
+      </p>
+      <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+        <%= number_to_currency(user, unit: "$ ", separator: ".", delimiter: ",") %>
+      </p>
+    </div>
+  </div>
+  <!-- Card -->
+  <div
+    class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+    <div
+      class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 21 21"><path fill="currentColor" d="M15 15V17H18V20H20V17H23V15H20V12H18V15M14.97 11.61C14.85 10.28 13.59 8.97 12 9C10.3 9.03 9 10.3 9 12C9 13.7 10.3 14.94 12 15C12.38 15 12.77 14.92 13.14 14.77C13.41 13.67 13.86 12.63 14.97 11.61M13 16H7C7 14.9 6.11 14 5 14V10C6.11 10 7 9.11 7 8H17C17 9.11 17.9 10 19 10V10.06C19.67 10.06 20.34 10.18 21 10.4V6H3V18H13.32C13.1 17.33 13 16.66 13 16Z"></path></svg>
+    </div>
+    <div>
+      <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+        Credits
+      </p>
+      <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><%= @transactions&.credit %></p>
+    </div>
+  </div>
+  <!-- Card -->
+  <div
+    class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+    <div class="p-3 mr-4 text-red-500 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-600">
+      <svg class="w-5 h-5" viewBox="0 0 20 20"><path fill="currentColor" d="M15 15V17H23V15M14.97 11.61C14.85 10.28 13.59 8.97 12 9C10.3 9.03 9 10.3 9 12C9 13.7 10.3 14.94 12 15C12.38 15 12.77 14.92 13.14 14.77C13.41 13.67 13.86 12.63 14.97 11.61M13 16H7C7 14.9 6.11 14 5 14V10C6.11 10 7 9.11 7 8H17C17 9.11 17.9 10 19 10V10.06C19.67 10.06 20.34 10.18 21 10.4V6H3V18H13.32C13.1 17.33 13 16.66 13 16Z"></path></svg>
+    </div>
+    <div>
+      <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+        Debits
+      </p>
+      <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><%= @transactions&.debit %></p>
+    </div>
+  </div>
+</div>
+
+
+

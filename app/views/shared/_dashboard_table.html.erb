@@ -1,0 +1,51 @@
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
+    <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"></h4>
+    <div class="w-full rounded-md overflow-x-auto">
+      <table class="w-full whitespace-no-wrap">
+        <thead>
+          <tr
+            class="text-xs font-semibold tracking-wide text-left text-gray-600 uppercase border-b dark:border-gray-700 bg-gray-200 dark:text-gray-400 dark:bg-gray-800">
+            <th class="px-4 py-3">Wallet Code</th>
+            <th class="px-4 py-3">User</th>
+            <th class="px-4 py-3">Balance available</th>
+            <th class="px-4 py-3">Created at</th>
+            <th class="px-4 py-3">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+          <% @users.each do |user| %>
+          <tr class="text-gray-700 dark:text-gray-400">
+            <td class="px- py-3 text-xs">
+              <button
+              class="ml-2 px-3 py-0 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+            >
+            <strong>#<%= user.try(:wallet).try(:wallet_number) %></strong>
+            </button>
+            </td>
+            <td class="px-4 py-1">
+              <div class="block gap-3 items-center text-sm">
+                  <p class="font-semibold"><%= user.name %></p>
+                  <p class="text-xs text-gray-600 dark:text-gray-400"><%= user.email %></p>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 text-sm">
+              
+              <%= number_to_currency(user.try(:wallet).try(:balance), unit: "R$ ", separator: ".", delimiter: ",") %>
+            </td>
+            <td class="px-4 py-3 text-sm">
+              <%= user.created_at.strftime("%a, %d %B %Y at %T") %>
+            </td>
+            <td class="px-4 py-3">
+              <div class="flex items-center space-x-4 text-sm">
+                <%= render "shared/links", user: user %>
+                <hr class="mt-6">
+              </div>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
