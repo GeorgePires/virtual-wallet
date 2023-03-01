@@ -1,6 +1,4 @@
-<a
-  class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-  href="https://github.com/estevanmaito/windmill-dashboard">
+<a class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple" href="#">
   <div class="flex items-center">
     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
       <path
@@ -9,15 +7,12 @@
     <span>Welcome!</span>
   </div>
 </a>
-<!-- Cards -->
-<% if notice.present? %>
-  <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
-    <%= notice %>
-  </p>
-<% end %>
+
+<%# Flash messages [success, error] %>
+<%= render  "shared/flash_msg" %>
 
 <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-  <!-- Card -->
+  <%# Card: Total clients %>
   <div
     class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
     <div
@@ -34,7 +29,7 @@
       <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><%= @users&.count %></p>
     </div>
   </div>
-  <!-- Card -->
+  <%# Card: Total wallets balance %>
   <div
     class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
     <div
@@ -55,7 +50,7 @@
       </p>
     </div>
   </div>
-  <!-- Card -->
+  <%# Card: Action Credits %>
   <div
     class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
     <div
@@ -69,7 +64,7 @@
       <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"><%= @transactions&.credit %></p>
     </div>
   </div>
-  <!-- Card -->
+  <%# Card: Action Debits %>
   <div
     class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
     <div class="p-3 mr-4 text-red-500 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-600">
