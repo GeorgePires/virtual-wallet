@@ -17,6 +17,6 @@ if Rails.env.development?
     spinner('Dropped database..') { `rails db:drop` }
     spinner('Created database..') { `rails db:create` }
     spinner('Migrating..') { `rails db:migrate` }
-    spinner('Create default Admin..') { `rails db:seed` }
+    spinner('Create default Admin and User with wallet..') { `rails db:seed` }
   end
 end
