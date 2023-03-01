@@ -3,5 +3,7 @@ class HomeController < ApplicationController
 
   def index
     @users = User.all
+    @transactions = Transaction.all
+    @total_wallets_balance = Wallet.sum(:balance)
   end
 end

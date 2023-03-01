@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1 or /users/1.json
   def show
     @wallet = @user.wallet
-    @transactions = @wallet.transactions.order(created_at: :desc)
+    @transactions = @wallet.transactions.limit(8).order(created_at: :desc)
   end
 
   # GET /users/new

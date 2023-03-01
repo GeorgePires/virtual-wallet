@@ -7,6 +7,8 @@ Rails.application.routes.draw do
         
         get "/debit", action: 'debit'
         post '/create_debit', action: 'create_debit'
+
+        get "/transactions", action: 'transactions'
       end
     end
   end
