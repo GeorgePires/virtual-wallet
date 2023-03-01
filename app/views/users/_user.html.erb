@@ -1,5 +1,10 @@
 <div id="<%= dom_id user %>">
   <p class="my-5">
+    <strong class="inline text-slate-700">Wallet code:</strong>
+    <strong>#<%= user.try(:wallet).try(:wallet_number) %></strong>
+  </p>
+
+  <p class="my-5">
     <strong class="inline text-slate-700">Name:</strong>
     <%= user.name %>
   </p>
@@ -10,8 +15,8 @@
   </p>
 
   <p class="my-5">
-    <strong class="inline text-slate-700">Date:</strong>
-    <%= user.created_at.strftime("%a, %d %B %Y") %>
+    <strong class="inline text-slate-700">Created:</strong>
+    <%= user.created_at.strftime("%a, %d %B %Y at %T") %>
   </p>
 
 
@@ -20,16 +25,8 @@
     <%= number_to_currency(user.try(:wallet).try(:balance), unit: "R$ ", separator: ".", delimiter: ",") %>
   </p>
 
-  <p class="my-5">
-    <strong class="inline text-slate-700">Code:</strong>
-    <strong>#<%= user.try(:wallet).try(:wallet_number) %></strong>
-  </p>
-
   <% if action_name != "show" %>
-    <%= link_to "Show this user", user, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this user', edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Credit', credit_user_wallets_path(user, user.wallet.id), method: :get, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'debit', debit_user_wallets_path(user, user.wallet.id), method: :get, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= render  "shared/links" %>
     <hr class="mt-6">
   <% end %>
 </div>

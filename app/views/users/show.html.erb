@@ -1,46 +1,52 @@
-<div class="mx-auto md:w-2/3 w-full flex">
+<div class="w-full">
+  <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"></h2>
+  <%# Dashboard/nav %>
+  <%= render 'shared/dashboard_nav', user: @wallet.balance  %>
   <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
+    <%# Cards Profile / History %>
+    <div id="users" class="grid gap-6 mb-8 md:grid-cols-2">
+      <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+        <h4 class="mb-4 font-semibold text-gray-900 dark:text-gray-600">
+          Profile
+        </h4>
+        <p class="text-gray-600 dark:text-gray-400"><%= render @user %></p>
 
-    <%= render @user %>
+        <%= render  "shared/links", user: @user %>
+        
+        <div class="inline-block ml-2">
+          <%= button_to 'Destroy this user', user_path(@user), method: :delete,
+          class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        </div>
 
-    <%= link_to 'Edit this user', edit_user_path(@user), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this user', user_path(@user), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        <%= link_to 'Back', root_path, class: "ml-2 rounded-lg py-3
+        px-5 bg-gray-100 inline-block font-medium" %>
+
+      </div>
+      <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+        <h4 class="mb-4 font-semibold">Transactions history</h4>
+        <table class="table table-zebra w-full">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Amount</th>
+              <th>Created At</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @transactions&.each do |t| %>
+              <tr>
+                <td>
+                  <span class="<%= color_transaction(t.transaction_type) %>">
+                    <%= t.transaction_type %>
+                  </span>
+                </td>
+                <td><%= number_to_currency(t.amount) %></td>
+                <td><%= t.created_at.strftime("%a, %d %B %Y at %T") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <%= link_to 'Back to users', users_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-
-    <h1><%= @user.name %></h1>
-
-    <p><strong>Email:</strong> <%= @user.email %></p>
-
-    <h2>Virtual Wallet</h2>
-
-    <p><strong>Balance:</strong> <%= number_to_currency(@user.try(:wallet).try(:balance)) %></p>
-
-    <h3>Wallet Entries</h3>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Amount</th>
-          <th>Created At</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @transactions&.each do |t| %>
-          <tr>
-            <td><%= t.transaction_type %></td>
-            <td><%= number_to_currency(t.amount) %></td>
-            <td><%= t.created_at %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <%= link_to "Back", users_path %>
   </div>
 </div>
