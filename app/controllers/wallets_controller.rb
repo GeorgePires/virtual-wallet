@@ -10,25 +10,23 @@ class WalletsController < ApplicationController
   def create_credit
     amount = params[:amount].to_f
     begin
-      if amount > 0 
-        @wallet.credit(amount)
+      if @wallet.credit(amount)
         redirect_to user_path(@user), notice: "Credit of $ #{amount} was successful."
       end
     rescue StandardError => e
-      redirect_to users_path, alert: "Credit of #{amount} was unsuccessful."
+      redirect_to user_path(@user), alert: "Credit of $ #{amount} was unsuccessful: #{e.message}"
     end
   end
 
 
   def create_debit
     amount = params[:amount].to_d
-
     begin
       if @wallet.debit(amount)
         redirect_to user_path(@user), notice: "Debit of $ #{amount} was successful."
       end
     rescue StandardError => e
-      redirect_to users_path, alert: "Debit of #{amount} was unsuccessful: #{e.message}"
+      redirect_to user_path(@user), alert: "Debit of $ #{amount} was unsuccessful: #{e.message}"
     end
   end
 
