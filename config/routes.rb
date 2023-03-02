@@ -12,6 +12,14 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:index, :show]
+      post "wallets/credit", to: 'wallets#credit'
+      post "wallets/debit", to: 'wallets#debit'
+    end
+  end
   devise_for :admins
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
