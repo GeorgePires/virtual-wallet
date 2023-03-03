@@ -52,7 +52,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # gem 'Rack-cors'
-gem "rack-cors"
+gem 'rack-cors', '~> 2.0'
 # gem 'Serializer'
 gem 'active_model_serializers'
 # gem 'Swagger/rspec
