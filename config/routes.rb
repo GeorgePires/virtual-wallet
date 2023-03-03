@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index]
       get '/users/:id', to: 'users#show', as: :user_transactions
+
+      get '/users/current_balance/:id', to: 'users#current_balance', as: :current_balance
       post 'wallets/credit', to: 'wallets#credit'
       post 'wallets/debit', to: 'wallets#debit'
     end

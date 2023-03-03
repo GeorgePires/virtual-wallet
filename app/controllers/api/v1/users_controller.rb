@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :set_user, only: %i[ show ]
+  before_action :set_user, only: %i[ show current_balance ]
   
   def index
     @users = User.all
@@ -12,6 +12,11 @@ class Api::V1::UsersController < ApplicationController
 
     render json: @transactions
   end
+
+  def current_balance
+    render json: @user, each_serializer: Api::V1::UserSerializer
+  end
+
 
   private
 
