@@ -1,26 +1,27 @@
 Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
-  
+
   resources :users do
     resources :wallets do
       collection do
-        get "/credit", action: 'credit'
+        get '/credit', action: 'credit'
         post '/create_credit', action: 'create_credit'
         
-        get "/debit", action: 'debit'
+        get '/debit', action: 'debit'
         post '/create_debit', action: 'create_debit'
 
-        get "/transactions", action: 'transactions'
+        get '/transactions', action: 'transactions'
       end
     end
   end
 
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:index, :show]
-      post "wallets/credit", to: 'wallets#credit'
-      post "wallets/debit", to: 'wallets#debit'
+      resources :users, only: [:index]
+      get '/users/:id', to: 'users#show', as: :user_transactions
+      post 'wallets/credit', to: 'wallets#credit'
+      post 'wallets/debit', to: 'wallets#debit'
     end
   end
   devise_for :admins
