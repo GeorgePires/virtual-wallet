@@ -3,14 +3,13 @@ require 'swagger_helper'
 RSpec.describe 'api/v1/users', type: :request do
 
   path '/api/v1/users' do
-
     get('list users') do
       response(200, 'successful') do
 
-        after do |example|
-          example.metadata[:response][:content] = {
+        after do |req|
+          req.metadata[:response][:content] = {
             'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
+              req: JSON.parse(response.body, symbolize_names: true)
             }
           }
         end
@@ -20,17 +19,16 @@ RSpec.describe 'api/v1/users', type: :request do
   end
 
   path '/api/v1/users/{id}' do
-    # You'll want to customize the parameter types...
-    parameter name: 'id', in: :path, type: :string, description: 'id'
+    parameter name: 'id', in: :path, type: :string, description: 'user_id'
 
-    get('show user') do
+    get('show user transactions') do
       response(200, 'successful') do
         let(:id) { '123' }
 
-        after do |example|
-          example.metadata[:response][:content] = {
+        after do |req|
+          req.metadata[:response][:content] = {
             'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
+              req: JSON.parse(response.body, symbolize_names: true)
             }
           }
         end
