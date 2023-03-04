@@ -31,7 +31,7 @@
             </td>
             <td class="px-4 py-3 text-sm">
               
-              <%= number_to_currency(user.try(:wallet).try(:balance), unit: "R$ ", separator: ".", delimiter: ",") %>
+              <%= number_to_currency(user.try(:wallet).try(:balance), unit: "$ ", separator: ".", delimiter: ",") %>
             </td>
             <td class="px-4 py-3 text-sm">
               <%= user.created_at.strftime("%a, %d %B %Y at %T") %>
