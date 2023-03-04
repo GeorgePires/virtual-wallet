@@ -1,10 +1,11 @@
 class Api::V1::WalletsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :set_wallet_and_user, only: %i[ credit debit ]
+  before_action :check_user, only: %i[ credit debit ]
 
   respond_to :json
 
   def credit
+    @wallet = @user.wallet
     amount = params[:amount].to_f
     begin
       render json: @wallet.credit(amount)
@@ -14,6 +15,7 @@ class Api::V1::WalletsController < ApplicationController
   end
 
   def debit
+    @wallet = @user.wallet
     amount = params[:amount].to_f
     begin
       render json: @wallet.debit(amount)
@@ -24,8 +26,10 @@ class Api::V1::WalletsController < ApplicationController
 
   private
 
-  def set_wallet_and_user
-    @user = User.find(params[:user_id])
-    @wallet = @user.wallet
+  def check_user
+    @user = User.find_by(id: params[:user_id])
+    return @user if @user.present?
+
+    render json: { message: "User not found" }, status: :not_found
   end
 end
