@@ -1,12 +1,12 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :set_user, only: %i[ show current_balance ]
-  
+  before_action :check_user, only: %i[ transactions current_balance ]
+
   def index
     @users = User.all
     render json: @users, each_serializer: Api::V1::UserSerializer
   end
 
-  def show
+  def transactions
     @wallet = @user.wallet
     @transactions = @wallet.transactions.order(created_at: :desc)
 
@@ -17,14 +17,12 @@ class Api::V1::UsersController < ApplicationController
     render json: @user, each_serializer: Api::V1::UserSerializer
   end
 
-
   private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def check_user
+    @user = User.find_by(id: params[:id])
+    return @user if @user.present?
 
-    def user_params
-      params.require(:user).permit(:name, :email)
-    end
+    render json: { message: "User not found" }, status: :not_found
+  end
 end
