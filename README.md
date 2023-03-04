@@ -1,24 +1,57 @@
-# README
+<br>
+<div align="center">
+    <img alt="app-virtual-wallet" src=".github/capa.png" width="95%">
+</div>
+<br>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 💻 Projeto
 
-Things you may want to cover:
+ **Virtual wallet manager**
 
-* Ruby version
+## 🚀 Tecnologias
 
-* System dependencies
+- Ruby 3.2.0
+- Rails 7.0.4
+- PostgreSQL
+- Hotwire - (Turbo e Stimulus)
+- Tailwind CSS
+- Importmap
+- Gem: Devise
+- Gem: Rspec
+- Gem: Rswage - Swagger
+- Gem: Active model serializers
 
-* Configuration
+## 💥 Funcionalidades
 
-* Database creation
+- [] 
 
-* Database initialization
+## ⚡ Instalando o Projeto
 
-* How to run the test suite
+```bash
+# clonar o projeto
+git clone git@github.com:GeorgePires/virtual-wallet.git
 
-* Services (job queues, cache servers, search engines, etc.)
+# entre no diretório clonado
+cd virtual-wallet
 
-* Deployment instructions
+# instalar dependências do Ruby on Rails
+bundle install
 
-* ...
+# instalar dependências do Node
+npm install
+
+# criar os bancos de dados e adiciona admin e user
+rails dev:setup
+
+```
+```bash
+# Admin de exemplo
+    - Admin: admin@gmail.com | senha: 123246
+```
+
+```bash
+# executar o projeto
+./bin/dev
+```
+
+Entre no endereço `http://localhost:3000`
