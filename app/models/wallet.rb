@@ -19,15 +19,19 @@ class Wallet < ApplicationRecord
   end
 
   def debit(amount)
-    if self.balance >= amount
-      ActiveRecord::Base.transaction do
-        self.balance -= amount
-        save!
-        transaction = transactions.create!(transaction_type: "debit", amount: amount)
-        transaction
+    if amount.positive?
+      if self.balance >= amount 
+        ActiveRecord::Base.transaction do
+          self.balance -= amount
+          save!
+          transaction = transactions.create!(transaction_type: "debit", amount: amount)
+          transaction
+        end
+      else
+        raise "Insufficient funds"
       end
     else
-      raise "Insufficient funds"
+      raise "Invalid amount"
     end
   end
 end

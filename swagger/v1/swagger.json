@@ -2,7 +2,8 @@
   "openapi": "3.0.1",
   "info": {
     "title": "API Virtual Wallets",
-    "version": "v1"
+    "version": "v1",
+    "description": "- Credit or debit money to the user's virtual wallet\n\n - Retrieve an user's virtual wallet current balance\n - Retrieve an user's virtual wallet transactions"
   },
   "paths": {
     "/api/v1/users": {
@@ -15,20 +16,41 @@
         }
       }
     },
-    "/api/v1/users/{id}": {
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "description": "ID of user",
-          "required": true,
-          "schema": {
-            "type": "string"
+    "/api/v1/users/current_balance/{id}": {
+      "get": {
+        "summary": "User current balance",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
           }
         }
-      ],
+      }
+    },
+    "/api/v1/users/transactions/{id}": {
       "get": {
         "summary": "show user transactions",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "successful"
@@ -73,7 +95,7 @@
             "in": "query",
             "description": "ID of user",
             "schema": {
-              "type": "decimal"
+              "type": "integer"
             }
           },
           {
@@ -95,10 +117,10 @@
   },
   "servers": [
     {
-      "url": "http://{defaultHost}",
+      "url": "http://localhost:3000/",
       "variables": {
         "defaultHost": {
-          "default": "127.0.0.1:3000/"
+          "default": "127.0.0.1"
         }
       }
     }
