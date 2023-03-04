@@ -19,15 +19,16 @@ RSpec.configure do |config|
       openapi: '3.0.1',
       info: {
         title: 'API Virtual Wallets',
-        version: 'v1'
+        version: 'v1',
+        description: "- Credit or debit money to the user's virtual wallet\n\n - Retrieve an user's virtual wallet current balance\n - Retrieve an user's virtual wallet transactions"
       },
       paths: {},
       servers: [
         {
-          url: 'http://{defaultHost}',
+          url: 'http://localhost:3000/',
           variables: {
             defaultHost: {
-              default: '127.0.0.1:3000/'
+              default: '127.0.0.1'
             }
           }
         }
