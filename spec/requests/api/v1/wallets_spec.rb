@@ -3,7 +3,6 @@ require 'swagger_helper'
 RSpec.describe 'api/v1/wallets', type: :request do
 
   path '/api/v1/wallets/credit' do
-
     post('credit wallet') do
       consumes 'application/json'
 
@@ -24,7 +23,6 @@ RSpec.describe 'api/v1/wallets', type: :request do
   end
 
   path '/api/v1/wallets/debit' do
-
     post('debit wallet') do
       consumes 'application/json'
 
