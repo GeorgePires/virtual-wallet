@@ -6,7 +6,8 @@
 
 ## 💻 Projeto
 
- **Virtual wallet manager**
+ **Virtual wallet manager - Gerenciar usuários e suas carteiras virtuais**
+ - [Descrição do projeto](https://github.com/forlav/challenge-2)
 
 ## 🚀 Tecnologias
 
@@ -18,12 +19,23 @@
 - Importmap
 - Gem: Devise
 - Gem: Rspec
-- Gem: Rswage - Swagger
+- Gem: Rswag - Swagger
 - Gem: Active model serializers
 
 ## 💥 Funcionalidades
 
-- [] 
+**WEB**
+- [x] Login - Admin
+- [x] CRUD de Usuários
+- [x] Creditar ou debitar dinheiro na carteira do usuário
+- [x] Histórico de transações realizadas ordenadas por data e hora
+
+**API**
+- [x] GET: Listar usuários.
+- [x] GET: Obter o saldo atual de um usuário
+- [x] GET: Listar ás transacões de um usuário
+- [x] POST: Creditar valor na conta do usuário
+- [x] POST: Debitar valor do usuário
 
 ## ⚡ Instalando o Projeto
 
@@ -40,7 +52,7 @@ bundle install
 # instalar dependências do Node
 npm install
 
-# criar os bancos de dados e adiciona admin e user
+# criar os bancos de dados e adicionar admin e user
 rails dev:setup
 
 ```
@@ -48,10 +60,19 @@ rails dev:setup
 # Admin de exemplo
     - Admin: admin@gmail.com | senha: 123246
 ```
-
 ```bash
 # executar o projeto
-./bin/dev
-```
+./bin/dev 
 
-Entre no endereço `http://localhost:3000`
+Entre no endereço: http://localhost:3000
+```
+## 🔰 API Virtual Wallets
+
+```bash
+# Swagger
+- http://localhost:3000/api-docs
+```
+<div align="center">
+    <img alt="routes-api" src=".github/routes-api.png">
+</div>
+<br>
