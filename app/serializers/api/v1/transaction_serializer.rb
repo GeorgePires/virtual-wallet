@@ -1,4 +1,4 @@
-class TransactionSerializer < ActiveModel::Serializer
+class Api::V1::TransactionSerializer < ActiveModel::Serializer
   attributes :id, :transaction_type, :amount, :created_at
 
   belongs_to :wallet
