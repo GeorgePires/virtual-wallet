@@ -1,4 +1,4 @@
-class WalletSerializer < ActiveModel::Serializer
+class Api::V1::WalletSerializer < ActiveModel::Serializer
   attributes :id, :balance, :wallet_number, :user
 
   belongs_to :user
