@@ -8,6 +8,7 @@
 
  **Virtual wallet manager - Gerenciar usuários e suas carteiras virtuais**
  - [Descrição do projeto](https://github.com/forlav/challenge-2)
+ - [Deploy - Acesse o projeto](https://virtual-wallet-gp.fly.dev/)
 
 ## 🚀 Tecnologias
 
@@ -19,8 +20,10 @@
 - Importmap
 - Gem: Devise
 - Gem: Rspec
+- Gem: Factory_bot
 - Gem: Rswag - Swagger
 - Gem: Active model serializers
+- Deploy ~> Fly.io
 
 ## 💥 Funcionalidades
 
