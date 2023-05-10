@@ -1,10 +1,15 @@
-# fly.toml file generated for virtual-wallet-gp on 2023-03-15T22:53:08-03:00
+# fly.toml app configuration file generated for virtualwallet on 2023-05-10T19:43:52-03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-app = "virtual-wallet-gp"
+app = "virtualwallet"
 kill_signal = "SIGINT"
 kill_timeout = 5
-primary_region = "gig"
+primary_region = "gru"
 processes = []
+
+[build]
 
 [env]
 
