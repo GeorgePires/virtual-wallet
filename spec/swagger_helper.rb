@@ -31,6 +31,10 @@ RSpec.configure do |config|
               default: '127.0.0.1'
             }
           }
+        },
+        {
+          url: 'https://virtualwallet.fly.dev/',
+          description: 'Production'
         }
       ]
     }
