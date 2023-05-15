@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UsersHelper
   def color_transaction(transaction_type)
     color = transaction_type == 'credit' ? 'green' : 'red'

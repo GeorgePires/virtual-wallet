@@ -1,9 +1,15 @@
-class Api::V1::TransactionSerializer < ActiveModel::Serializer
-  attributes :id, :transaction_type, :amount, :created_at
+# frozen_string_literal: true
 
-  belongs_to :wallet
+module Api
+  module V1
+    class TransactionSerializer < ActiveModel::Serializer
+      attributes :id, :transaction_type, :amount, :created_at
 
-  def created_at
-    object.created_at.strftime("%d %b %Y at %T")
+      belongs_to :wallet
+
+      def created_at
+        object.created_at.strftime('%d %b %Y at %T')
+      end
+    end
   end
 end

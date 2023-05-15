@@ -1,14 +1,18 @@
-class Api::V1::UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email, :wallet
+# frozen_string_literal: true
 
-  has_one :wallet
+module Api
+  module V1
+    class UserSerializer < ActiveModel::Serializer
+      attributes :id, :name, :email, :wallet
 
-  def wallet
-    {
-      wallet_id: self.object.wallet.id,
-      current_balance: self.object.wallet.balance
-    }
+      has_one :wallet
+
+      def wallet
+        {
+          wallet_id: object.wallet.id,
+          current_balance: object.wallet.balance
+        }
+      end
+    end
   end
 end
-
-

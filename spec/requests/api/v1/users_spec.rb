@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/users', type: :request do
-
   path '/api/v1/users' do
     get('list users') do
       consumes 'application/json'
-      
+
       response(200, 'successful') do
         after do |req|
           req.metadata[:response][:content] = {
