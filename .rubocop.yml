@@ -1,0 +1,16 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2.0
+  Exclude:
+    - 'bin/**/*'     
+    - 'db/**/*.rb'     
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'node_modules/**/*'
+    - 'lib/tasks/**/*'
+
+
+Style/Documentation:
+  Enabled: false

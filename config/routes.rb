@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :wallets do
-      collection do
+      member do
         get '/credit', action: 'credit'
         post '/create_credit', action: 'create_credit'
         
